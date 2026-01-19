@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>EsmaelTech | Creator</title>
+    <link rel="icon" type="smartgiro-logo" href="unnamed-removebg-preview.png">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- AJUSTES GERAIS MOBILE --- */
+        body { overflow-x: hidden; }
+        
+        /* Hero */
+        .creator-hero {
+            padding-top: 130px;
+            padding-bottom: 50px;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(41, 121, 255, 0.1) 0%, transparent 60%);
+        }
+
+        /* Avatar (Sem Verificado) */
+        .big-avatar-container {
+            position: relative;
+            width: 160px; /* Levemente menor para mobile */
+            height: 160px;
+            margin: 0 auto 25px;
+        }
+        .big-avatar {
+            width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
+            border: 3px solid var(--neon-cyan);
+            box-shadow: 0 0 40px rgba(41, 121, 255, 0.3);
+            position: relative; z-index: 2;
+        }
+        .pulse-ring {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 100%; height: 100%; border-radius: 50%;
+            border: 2px solid var(--neon-purple);
+            animation: ringPulse 2.5s infinite; z-index: 1;
+        }
+        @keyframes ringPulse {
+            0% { width: 100%; height: 100%; opacity: 1; }
+            100% { width: 150%; height: 150%; opacity: 0; }
+        }
+
+        /* Container dos botões para garantir alinhamento no mobile */
+.social-buttons-row {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+/* Container que alinha os botões */
+.social-container-final {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    padding: 10px;
+}
+
+/* Base comum para os dois - SEM FUNDO CINZA */
+.btn-new-tk, .btn-new-yt {
+    position: relative;
+    padding: 14px 32px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.8); /* Fundo preto semi-transparente */
+    min-width: 160px;
+    justify-content: center;
+    z-index: 1;
+}
+
+/* Estilo TIKTOK: Neon Ciano/Rosa */
+.btn-new-tk {
+    color: #fff;
+    border: 1px solid rgba(0, 243, 255, 0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-new-tk i { color: #00f3ff; }
+
+.btn-new-tk:hover {
+    border-color: #ff0050;
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.3), 0 0 40px rgba(255, 0, 80, 0.2);
+    transform: translateY(-3px);
+}
+
+/* Estilo YOUTUBE: Vermelho Intenso */
+.btn-new-yt {
+    color: #fff;
+    border: 1px solid rgba(255, 0, 0, 0.4);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-new-yt i { color: #ff0000; }
+
+.btn-new-yt:hover {
+    background: #ff0000; /* Preenche de vermelho ao passar o mouse */
+    border-color: #ff0000;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+    transform: translateY(-3px);
+}
+
+.btn-new-yt:hover i { color: #fff; } /* Ícone fica branco no hover */
+
+/* Ajuste Mobile: Botões um embaixo do outro no celular */
+@media (max-width: 480px) {
+    .social-container-final {
+        flex-direction: column;
+        align-items: center;
+    }
+    .btn-new-tk, .btn-new-yt {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-social-custom {
+        width: 100%; /* No celular eles ocupam a largura toda */
+    }
+}
+        /* Métricas Responsivas */
+        .metrics-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); /* Padrão Desktop */
+            gap: 15px; margin-top: 30px;
+        }
+        /* Celular: Uma embaixo da outra */
+        @media (max-width: 768px) {
+            .metrics-grid { grid-template-columns: 1fr; gap: 15px; }
+            .hero-title { font-size: 2.2rem !important; }
+        }
+        
+        .metric-card {
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08);
+            padding: 25px; border-radius: 12px; text-align: center;
+        }
+        .metric-number { font-size: 2.2rem; font-weight: 900; color: white; display: block; }
+        .metric-label { font-size: 0.8rem; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Setup Grid Responsivo */
+        .setup-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px; margin-top: 30px;
+        }
+        .setup-item {
+            background: rgba(255,255,255,0.03); border-radius: 12px; padding: 20px;
+            text-align: center; border: 1px solid transparent; transition: 0.3s;
+        }
+        .setup-item:hover { border-color: var(--neon-cyan); background: rgba(0, 243, 255, 0.05); }
+
+        /* --- NOVA ÁREA DE CONTATO: THE COMMAND DECK --- */
+        .command-deck {
+            display: flex; flex-direction: column; gap: 20px;
+            max-width: 700px; margin: 0 auto; margin-top: 40px;
+        }
+
+        .action-bar {
+            position: relative;
+            padding: 30px;
+            border-radius: 16px;
+            display: flex; align-items: center; justify-content: space-between;
+            text-decoration: none; overflow: hidden; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Barra Business (Gold) */
+        .bar-business {
+            background: linear-gradient(90deg, rgba(255, 215, 0, 0.05), transparent);
+            border-left: 4px solid #FFD700;
+        }
+        .bar-business:hover {
+            transform: scale(1.02);
+            background: linear-gradient(90deg, rgba(255, 215, 0, 0.15), transparent);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+        .bar-business .icon-box { color: #FFD700; background: rgba(255, 215, 0, 0.1); }
+
+        /* Barra Community (Cyan) */
+        .bar-community {
+            background: linear-gradient(90deg, rgba(0, 243, 255, 0.05), transparent);
+            border-left: 4px solid var(--neon-cyan);
+        }
+        .bar-community:hover {
+            transform: scale(1.02);
+            background: linear-gradient(90deg, rgba(0, 243, 255, 0.15), transparent);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-color: rgba(0, 243, 255, 0.3);
+        }
+        .bar-community .icon-box { color: var(--neon-cyan); background: rgba(0, 243, 255, 0.1); }
+
+        /* Elementos internos da barra */
+        .action-content h3 { font-size: 1.1rem; margin-bottom: 5px; color: white; text-transform: uppercase; }
+        .action-content p { font-size: 0.85rem; color: #aaa; margin: 0; }
+        .icon-box {
+            width: 50px; height: 50px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+            flex-shrink: 0; margin-right: 20px;
+        }
+        .arrow-indicator { color: white; opacity: 0.3; transition: 0.3s; }
+        .action-bar:hover .arrow-indicator { opacity: 1; transform: translateX(5px); }
+
+        /* Mobile ajust for Action Bars */
+        @media (max-width: 600px) {
+            .action-bar { padding: 20px; }
+            .icon-box { width: 40px; height: 40px; font-size: 1.2rem; margin-right: 15px; }
+            .action-content h3 { font-size: 1rem; }
+            .action-content p { font-size: 0.75rem; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand"><a href="index.html" style="text-decoration:none; color:white;">EsmaelTech!</a></div>
+
+    </header>
+
+    <section class="creator-hero">
+        <div class="particles-container">
+            <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        </div>
+
+        <div class="container reveal">
+            <div class="big-avatar-container">
+                <div class="pulse-ring"></div>
+                <img src="EsmaelTechfotode Perfil.png" alt="EsmaelTech" class="big-avatar">
+            </div>
+
+            <h1 class="hero-title" style="font-size: 2.8rem; margin-bottom: 10px;">ESMAELTECH!</h1>
+            <p style="color: var(--neon-cyan); letter-spacing: 2px; font-weight: 700; margin-bottom: 20px; font-size: 0.9rem;">@EsmaelTech23</p>
+            
+            <p style="max-width: 500px; margin: 0 auto 30px; color: #ccc; font-size: 0.95rem; line-height: 1.6;">
+                O rosto técnico por trás da SmartGiro. Conteúdo honesto sobre tecnologia, testes reais e dicas que salvam o seu bolso.
+            </p>
+
+          <div class="social-container-final">
+    <a href="https://www.tiktok.com/@esmaeltech23" target="_blank" class="btn-new-tk">
+        <i class="fa-brands fa-tiktok"></i>
+        <span>TIKTOK</span>
+    </a>
+
+    <a href="https://www.youtube.com/@EsmaelTech023" target="_blank" class="btn-new-yt">
+        <i class="fa-brands fa-youtube"></i>
+        <span>YOUTUBE</span>
+    </a>
+</div>
+</div>
+        </div>
+    </section>
+
+    <section class="container reveal" style="margin-bottom: 60px;">
+        <div class="tech-card" style="background: rgba(10, 10, 20, 0.8); padding: 20px;">
+            <p style="text-align: center; color: var(--neon-purple); font-size: 0.8rem; font-weight: 700; margin-bottom: 10px;">ALCANCE</p>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <i class="fa-solid fa-users" style="color: var(--neon-cyan); font-size: 1.2rem; margin-bottom: 10px;"></i>
+                    <span class="metric-number" data-target="30300">0</span>
+                    <span class="metric-label">Seguidores</span>
+                </div>
+                <div class="metric-card">
+                    <i class="fa-solid fa-eye" style="color: var(--neon-purple); font-size: 1.2rem; margin-bottom: 10px;"></i>
+                    <span class="metric-number" data-target="17500000">0</span>
+                    <span class="metric-label">Visualizações</span>
+                </div>
+                <div class="metric-card">
+                    <i class="fa-solid fa-check-double" style="color: #00ff88; font-size: 1.2rem; margin-bottom: 10px;"></i>
+                    <span class="metric-number" data-target="500">0</span>
+                    <span class="metric-label">Aparelhos</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="container reveal" style="padding-bottom: 80px;">
+    
+    <div class="tech-card" style="text-align: center; padding: 50px 30px; margin-bottom: 30px; background: radial-gradient(circle at top, rgba(41, 121, 255, 0.15), transparent); border-top: 2px solid var(--neon-cyan);">
+        <div style="font-size: 3.5rem; margin-bottom: 15px;">❤️</div>
+        <h2 style="font-size: 2.2rem; color: #fff; text-shadow: 0 0 20px rgba(41, 121, 255, 0.5);">+30K SEGUIDORES</h2>
+        <p style="max-width: 700px; margin: 15px auto; color: #ccc; line-height: 1.6;">
+            O EsmaelTech não é apenas um perfil, é uma comunidade. Obrigado por cada curtida, comentário e por impulsionarem nossa jornada no mundo da tecnologia! 🚀
+        </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        
+        <div class="tech-card" style="display: flex; align-items: center; gap: 20px; border-left: 4px solid #FFD700;">
+            <div style="font-size: 2rem; color: #FFD700;"><i class="fa-solid fa-chart-line"></i></div>
+            <div>
+                <h4 style="color: #FFD700; margin: 0;">16.8M VIEWS</h4>
+                <p style="font-size: 0.8rem; margin: 5px 0 0;">Impacto em menos de 2 anos.</p>
+            </div>
+        </div>
+
+        <div class="tech-card" style="display: flex; align-items: center; gap: 20px; border-left: 4px solid var(--neon-cyan);">
+            <div style="font-size: 2rem; color: var(--neon-cyan);"><i class="fa-solid fa-rocket"></i></div>
+            <div>
+                <h4 style="color: white; margin: 0;">NOSSA MISSÃO</h4>
+                <p style="font-size: 0.8rem; margin: 5px 0 0;">Inovação e conteúdo real.</p>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 30px; display: flex; flex-wrap: wrap; gap: 20px;">
+        <div class="tech-card" style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.03);">
+            <h4 style="color: var(--neon-cyan); margin-bottom: 8px;">Esmael</h4>
+            <p style="font-size: 0.85rem; color: #bbb;">Conduz com energia e autenticidade cada projeto e review.</p>
+        </div>
+        <div class="tech-card" style="flex: 1; min-width: 250px; background: rgba(255,255,255,0.03);">
+            <h4 style="color: #ff0050; margin-bottom: 8px;">João Lucas</h4>
+            <p style="font-size: 0.85rem; color: #bbb;">O mestre da edição, elevando a qualidade visual dos conteúdos.</p>
+        </div>
+    </div>
+
+</section>
+    <section class="container reveal" style="padding-bottom: 60px;">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <h2 style="font-size: 1.5rem; margin-bottom: 10px;">O Arsenal Técnico</h2>
+            <p style="font-size: 0.9rem;">Equipamentos que garantem a qualidade do conteúdo.</p>
+            
+            <div class="setup-grid">
+                <div class="setup-item">
+                    <i class="fa-solid fa-camera" style="color: var(--neon-cyan); font-size: 1.5rem; margin-bottom: 10px;"></i>
+                    <div style="font-weight: 700; color: white;">S23 Ultra</div>
+                    <div style="font-size: 0.7rem; color: #777;">Câmera Principal</div>
+                </div>
+                <div class="setup-item">
+                    <i class="fa-solid fa-microphone-lines" style="color: var(--neon-purple); font-size: 1.5rem; margin-bottom: 10px;"></i>
+                    <div style="font-weight: 700; color: white;">Wireless Mic</div>
+                    <div style="font-size: 0.7rem; color: #777;">Áudio Profissional</div>
+                </div>
+                <div class="setup-item">
+                    <i class="fa-solid fa-lightbulb" style="color: #FFD700; font-size: 1.5rem; margin-bottom: 10px;"></i>
+                    <div style="font-weight: 700; color: white;">RGB Light</div>
+                    <div style="font-size: 0.7rem; color: #777;">Ambiente</div>
+                </div>
+                <div class="setup-item">
+                    <i class="fa-solid fa-scissors" style="color: #ff0050; font-size: 1.5rem; margin-bottom: 10px;"></i>
+                    <div style="font-weight: 700; color: white;">CapCut Pro</div>
+                    <div style="font-size: 0.7rem; color: #777;">Edição</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container reveal" style="padding-bottom: 80px; text-align: center;">
+        <h2 style="font-size: 1.5rem; margin-bottom: 30px;">Quer conversar ou Tirar Dúvidas?</h2>
+        
+        <p style="margin-bottom: 30px;">Divulgações e colaborações com marcas de tecnologia. Entre em contato:</p>
+
+        <div style="display: flex; flex-direction: column; gap: 15px; max-width: 400px; margin: 0 auto;">
+            
+            <a href="mailto:contato.esmaeltech@gmail.com" style="text-decoration: none;">
+                <div style="background: var(--glass-bg); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; display: flex; align-items: center; gap: 15px; transition: 0.3s;" onmouseover="this.style.borderColor='var(--neon-purple)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'">
+                    <div style="background: rgba(255,255,255,0.1); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+                        <i class="fa-solid fa-envelope" style="color: white;"></i>
+                    </div>
+                    <div style="text-align: left;">
+                        <span style="display: block; font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase;">E-mail Oficial</span>
+                        <span style="display: block; font-size: 0.95rem; color: white; font-weight: 600;">contato.esmaeltech@gmail.com</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://www.tiktok.com/@esmaeltech23" target="_blank" style="text-decoration: none;">
+                <div style="background: var(--glass-bg); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; display: flex; align-items: center; gap: 15px; transition: 0.3s;" onmouseover="this.style.borderColor='var(--neon-cyan)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'">
+                    <div style="background: rgba(255,255,255,0.1); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+                        <i class="fa-brands fa-tiktok" style="color: white;"></i>
+                    </div>
+                    <div style="text-align: left;">
+                        <span style="display: block; font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase;">TikTok / Youtube</span>
+                        <span style="display: block; font-size: 0.95rem; color: white; font-weight: 600;">@EsmaelTech23</span>
+                    </div>
+                </div>
+            </a>
+            <a href="https://linktr.ee/esmaeltech" target="_blank" style="text-decoration: none;">
+                <div style="background: var(--glass-bg); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; display: flex; align-items: center; gap: 15px; transition: 0.3s;" onmouseover="this.style.borderColor='#43E660'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'">
+                    <div style="background: rgba(255,255,255,0.1); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+                        <i class="fa-solid fa-link" style="color: white;"></i>
+                    </div>
+                    <div style="text-align: left;">
+                        <span style="display: block; font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase;">Todas as Redes</span>
+                        <span style="display: block; font-size: 0.95rem; color: white; font-weight: 600;">LinkTree Oficial</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+    <section class="container reveal" style="margin-bottom: 80px;">
+    <div class="tech-card" style="text-align: center; padding: 60px 24px; border: 1px solid var(--neon-cyan);">
+        
+        <div class="pill-badge" style="margin-bottom: 20px;">Projeto Independente</div>
+
+        <h2 style="font-family: 'Outfit', sans-serif; font-size: 2.2rem; margin-bottom: 15px; color: white;">
+            SMARTGIRO BY ESMAELTECH
+        </h2>
+
+        <p style="max-width: 600px; margin: 0 auto 35px; color: var(--text-dim); line-height: 1.6;">
+            Desbrave o início de uma nova jornada tecnológica. O SmartGiro é o meu projeto pessoal focado em inovação, onde a paixão por tecnologia se transforma em soluções reais.
+        </p>
+
+        <div style="display: flex; justify-content: center;">
+            <a href="#" class="btn btn-neon pulse-btn" style="width: auto; min-width: 280px; justify-content: center;">
+                CONHECER O PROJETO
+            </a>
+        </div>
+        
+    </div>
+</section>
+
+    <footer style="background: #020205; padding: 40px 24px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <div class="brand" style="font-size: 1.5rem; margin-bottom: 10px;">EsmaelTech!</div>
+            <p style="color: #444; font-size: 0.75rem; margin-bottom: 0;">© 2025 SmartGiro Project.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Script de Contagem Otimizado
+        function formatNumber(num) {
+            if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+            if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+            return num;
+        }
+
+        const counters = document.querySelectorAll('.metric-number');
+        let activated = false;
+
+        function startCounters() {
+            const container = document.querySelector('.metrics-grid');
+            if(!container) return;
+            
+            const containerTop = container.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+
+            if (containerTop < windowHeight - 50 && !activated) {
+                activated = true;
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    const duration = 1500; 
+                    const increment = target / (duration / 30);
+
+                    let current = 0;
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            counter.innerText = Math.ceil(current).toLocaleString('pt-BR'); 
+                            setTimeout(updateCounter, 30);
+                        } else {
+                            counter.innerText = formatNumber(target) + "+";
+                        }
+                    };
+                    updateCounter();
+                });
+            }
+        }
+
+        window.addEventListener('scroll', startCounters);
+        // Tenta rodar logo de cara caso já esteja visível
+        setTimeout(startCounters, 500);
+    </script>
+</body>
+</html>
